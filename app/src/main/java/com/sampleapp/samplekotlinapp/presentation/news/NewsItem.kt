@@ -42,8 +42,7 @@ fun NewsItem(article: Article){
     Card (
         modifier = Modifier.fillMaxWidth().padding(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer,
-            contentColor = MaterialTheme.colorScheme.tertiaryContainer
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
         )
     ){
         Column (modifier = Modifier.padding(16.dp)){
