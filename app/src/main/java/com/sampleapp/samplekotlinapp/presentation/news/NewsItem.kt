@@ -13,24 +13,20 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
-import androidx.compose.material3.ChipElevation
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sampleapp.samplekotlinapp.data.models.Article
 import com.sampleapp.samplekotlinapp.data.models.formatPublishedDate
-import com.sampleapp.samplekotlinapp.ui.theme.Black
-import com.sampleapp.samplekotlinapp.ui.theme.White
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -40,11 +36,9 @@ fun NewsItem(article: Article){
     val url = article.url
     Card (
         modifier = Modifier.fillMaxWidth().padding(8.dp),
-        colors = CardColors(
+        colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainer,
-            contentColor = MaterialTheme.colorScheme.tertiaryContainer,
-            disabledContentColor = Color.LightGray,
-            disabledContainerColor = Color.DarkGray
+            contentColor = MaterialTheme.colorScheme.tertiaryContainer
         )
     ){
         Column (modifier = Modifier.padding(16.dp)){
@@ -83,11 +77,9 @@ fun NewsItem(article: Article){
             Button(
                 modifier = Modifier.align(Alignment.End),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonColors(
+                colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.surfaceContainer,
-                    disabledContentColor = Color.LightGray,
-                    disabledContainerColor = Color.DarkGray
+                    contentColor = MaterialTheme.colorScheme.surfaceContainer
                 ),
                 onClick = {
                     val intent = Intent(Intent.ACTION_VIEW , Uri.parse(url))
