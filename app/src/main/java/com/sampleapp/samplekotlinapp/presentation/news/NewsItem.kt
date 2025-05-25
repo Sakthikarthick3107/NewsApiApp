@@ -23,10 +23,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.sampleapp.samplekotlinapp.data.models.Article
 import com.sampleapp.samplekotlinapp.data.models.formatPublishedDate
+import com.sampleapp.samplekotlinapp.ui.theme.Black
+import com.sampleapp.samplekotlinapp.ui.theme.White
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -68,30 +73,36 @@ fun NewsItem(article: Article){
 
                     )
                 }
-            Text(text = article.title, style = MaterialTheme.typography.titleMedium)
+            Text(text = article.title, style = TextStyle(
+                fontSize = 18.sp
+            ))
             article.description?.let{
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = it, style = MaterialTheme.typography.bodyMedium)
+                Text(text = it, style = TextStyle(
+                    fontSize = 14.sp
+                ))
             }
 
             Button(
                 modifier = Modifier.align(Alignment.End),
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.surfaceContainer
+                    containerColor = Black,
+                    contentColor = White
                 ),
                 onClick = {
                     val intent = Intent(Intent.ACTION_VIEW , Uri.parse(url))
                     context.startActivity(intent)
                 }
             ) {
-                Text("Read more")
+                Text("Read more" , style = TextStyle(color = White))
             }
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            Text(text = formatPublishedDate(article.publishedAt))
+            Text(text = formatPublishedDate(article.publishedAt) , style = TextStyle(
+                fontSize = 12.sp
+            ))
         }
     }
 }
